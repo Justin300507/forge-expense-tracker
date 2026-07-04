@@ -55,7 +55,7 @@ def create_budget(
 ):
     category = (
         db.query(Category)
-        .filter(Category.name == budget_in.category, Category.user_id == current_user.id)
+        .filter(Category.id == budget_in.category_id, Category.user_id == current_user.id)
         .first()
     )
     if not category:
@@ -63,7 +63,7 @@ def create_budget(
 
     db_budget = Budget(
         user_id=current_user.id,
-        category_id=category.id,
+        category_id=budget_in.category_id,
         amount=budget_in.amount,
         month=budget_in.month,
         year=budget_in.year,
@@ -89,20 +89,18 @@ def update_budget(
     if not budget:
         raise HTTPException(status_code=404, detail="Budget not found")
 
-    if budget_in.category is not None:
+    if budget_in.category_id is not None:
         category = (
             db.query(Category)
-            .filter(Category.name == budget_in.category, Category.user_id == current_user.id)
+            .filter(Category.id == budget_in.category_id, Category.user_id == current_user.id)
             .first()
         )
         if not category:
             raise HTTPException(status_code=404, detail="Category not found for the current user")
-        budget.category_id = category.id
 
     update_data = budget_in.model_dump(exclude_unset=True)
     for key, value in update_data.items():
-        if key != "category": # category is handled separately
-            setattr(budget, key, value)
+        setattr(budget, key, value)
 
     db.commit()
     db.refresh(budget)

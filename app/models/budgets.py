@@ -15,9 +15,24 @@ class Budget(Base):
 
     @property
     def category(self):
-        return []
+        from sqlalchemy import inspect as _sa_inspect
+        _sess = _sa_inspect(self).session
+        if _sess is None or self.category_id is None:
+            return None
+        from app.models.categories import Category
+        return _sess.query(Category).get(self.category_id)
+
+    @property
+    def category_name(self):
+        cat = self.category
+        return cat.name if cat is not None else None
 
     @property
     def user(self):
-        return []
+        from sqlalchemy import inspect as _sa_inspect
+        _sess = _sa_inspect(self).session
+        if _sess is None or self.user_id is None:
+            return None
+        from app.models.users import User
+        return _sess.query(User).get(self.user_id)
 
