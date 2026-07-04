@@ -85,7 +85,7 @@ const BudgetsPage = () => {
                                 <tbody>
                                     {budgets.map((budget) => (
                                         <tr key={budget.id} className="border-t border-slate-100 dark:border-slate-700">
-                                            <td className="px-5 py-4 text-sm text-slate-900 dark:text-white">{budget.category ?? budget.category_id}</td>
+                                            <td className="px-5 py-4 text-sm text-slate-900 dark:text-white">{budget.category_name ?? budget.category_id}</td>
                                             <td className="px-5 py-4 text-sm text-slate-900 dark:text-white">${Number(budget.amount).toFixed(2)}</td>
                                             <td className="px-5 py-4 text-sm text-slate-900 dark:text-white">
                                                 {budget.month && budget.year
