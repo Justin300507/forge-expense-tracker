@@ -1,0 +1,84 @@
+{
+  "decisions": [
+    {
+      "agent": "product_manager",
+      "decision": "product_spec_created",
+      "rationale": "Effortlessly track your spending, categorize expenses, and manage budgets to achieve financial clarity.",
+      "data": {
+        "features": 5,
+        "user_stories": 5,
+        "must_have": [
+          "Expense Logging",
+          "Category Management",
+          "Budget Setting",
+          "Spending Charts",
+          "Expense List View"
+        ]
+      }
+    },
+    {
+      "agent": "architect",
+      "decision": "architecture_created",
+      "rationale": "21 endpoints across 7 files",
+      "data": {
+        "endpoints": 21
+      }
+    },
+    {
+      "agent": "tech_lead",
+      "decision": "constraints_set",
+      "rationale": "The proposed architecture for Forge Expense Tracker is generally sound and aligns well with the product spec and technical contract. Key areas like au",
+      "data": {
+        "critical_issues": 1,
+        "auth_endpoints": 18,
+        "pagination_required": 3
+      }
+    },
+    {
+      "agent": "qa",
+      "decision": "qa_review_complete",
+      "rationale": "QA score: 90/100",
+      "data": {
+        "score": 90,
+        "blockers": [
+          "Missing validation for non-positive amounts when creating expenses and budgets."
+        ]
+      }
+    },
+    {
+      "agent": "security",
+      "decision": "security_review_complete",
+      "rationale": "Security score: 60/100",
+      "data": {
+        "score": 60
+      }
+    },
+    {
+      "agent": "code_review",
+      "decision": "code_review_complete",
+      "rationale": "Maintainability: 65/100",
+      "data": {
+        "maintainability_score": 65
+      }
+    },
+    {
+      "agent": "performance",
+      "decision": "performance_review_complete",
+      "rationale": "Performance score: 70/100",
+      "data": {
+        "score": 70
+      }
+    },
+    {
+      "agent": "orchestrator",
+      "decision": "pipeline_complete",
+      "rationale": "V6 score: 76/100",
+      "data": {
+        "total_time": 176.5,
+        "can_export": true
+      }
+    }
+  ],
+  "conflicts": [],
+  "shared_context_keys": []
+}
